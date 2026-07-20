@@ -10,7 +10,7 @@
 
 # Skills For Real Engineers
 
-[![skills.sh](https://skills.sh/b/mattpocock/skills)](https://skills.sh/mattpocock/skills)
+[![skills.sh](https://skills.sh/b/polpo-space/skills)](https://skills.sh/polpo-space/skills)
 
 My agent skills that I use every day to do real engineering - not vibe coding.
 
@@ -22,22 +22,62 @@ If you want to keep up with changes to these skills, and any new ones I create, 
 
 [Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)
 
-## Quickstart (30-second setup)
+## 通过 skills.sh 安装
 
-1. Run the skills.sh installer:
+本仓库是公开的 Skills 仓库，默认分支为 `main`，并保留标准的
+`skills/**/SKILL.md` 目录结构，可以直接作为 `npx skills` 的安装源。
+
+### 查看可安装的 Skills
 
 ```bash
-npx skills@latest add mattpocock/skills
+npx skills@latest add polpo-space/skills --list
 ```
 
-2. Pick the skills you want, and which coding agents you want to install them on. **Make sure you select `/setup-matt-pocock-skills`**.
+### 交互式安装
 
-3. Run `/setup-matt-pocock-skills` in your agent. It will:
-   - Ask you which issue tracker you want to use (GitHub, Linear, or local files)
-   - Ask you what labels you apply to tickets when you triage them (`/triage` uses labels)
-   - Ask you where you want to save any docs we create
+```bash
+npx skills@latest add polpo-space/skills
+```
 
-4. Bam - you're ready to go.
+安装过程中可以选择具体 Skill、目标 Agent，以及项目级或全局安装。
+`skills` CLI 支持使用 `owner/repo` 形式安装任意公开的 GitHub Skills 仓库。
+
+### 安装到 Codex
+
+安装指定 Skill，例如 `to-spec`：
+
+```bash
+npx skills@latest add polpo-space/skills \
+  --skill to-spec \
+  --agent codex \
+  --global
+```
+
+无交互安装：
+
+```bash
+npx skills@latest add polpo-space/skills \
+  --skill to-spec \
+  --agent codex \
+  --global \
+  --yes
+```
+
+安装所有 Skill：
+
+```bash
+npx skills@latest add polpo-space/skills \
+  --skill '*' \
+  --agent codex \
+  --global
+```
+
+也可以直接指定仓库中的某个 Skill 目录：
+
+```bash
+npx skills@latest add \
+  https://github.com/polpo-space/skills/tree/main/skills/engineering/to-spec
+```
 
 ## Install as a Claude Code plugin
 
