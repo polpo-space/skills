@@ -9,12 +9,12 @@ Use the locally installed [`jira` CLI](https://github.com/ankitpokhrel/jira-cli)
 
 This skill uses only the local CLI. Do not look for or substitute another backend.
 
-## Availability check
+## Availability and environment check
 
 Run this before the first Jira operation in a conversation:
 
 ```bash
-command -v jira
+which jira
 ```
 
 If the command is unavailable, stop and guide the user through setup:
@@ -25,6 +25,27 @@ jira init
 ```
 
 Do not silently substitute another Jira backend.
+
+All Jira CLI commands must load the user's Jira environment file in the same shell:
+
+```bash
+source ~/.jira-cli.env
+```
+
+The environment file is expected to provide authentication settings, for example:
+
+```bash
+export JIRA_API_TOKEN="..."
+export JIRA_AUTH_TYPE="bearer"
+```
+
+Run every Jira command like this:
+
+```bash
+source ~/.jira-cli.env && jira issue view PROJ-123
+```
+
+**Hard rule:** Before every Jira CLI invocation, source `~/.jira-cli.env` in the same shell. Never assume the current shell has already loaded these variables.
 
 ## Quick reference
 
