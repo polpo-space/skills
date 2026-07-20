@@ -1,0 +1,5 @@
+interface:
+  display_name: "Jira CLI"
+  short_description: "Manage Jira issues using the local CLI"
+policy:
+  allow_implicit_invocation: true
