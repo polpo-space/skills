@@ -6,10 +6,13 @@ Reference for [`ankitpokhrel/jira-cli`](https://github.com/ankitpokhrel/jira-cli
 
 ```bash
 command -v jira
-jira init
-jira me
-jira serverinfo
+source ~/.jira-cli.env && jira init
+source ~/.jira-cli.env && jira me
+source ~/.jira-cli.env && jira serverinfo
 ```
+
+Every `jira` invocation in this reference assumes `~/.jira-cli.env` is sourced in the same
+shell. Do not print the environment file or token while debugging.
 
 ## View issues
 
@@ -153,6 +156,33 @@ jira project list
 jira board list
 ```
 
+## Download attachments
+
+First read the issue's raw fields and locate the attachment `content` URL:
+
+```bash
+source ~/.jira-cli.env && jira issue view PROJ-123 --raw
+```
+
+For a Jira Data Center personal access token configured with
+`JIRA_AUTH_TYPE=bearer`, download the attachment without putting the token directly in the URL:
+
+```bash
+source ~/.jira-cli.env
+wget --header="Authorization: Bearer $JIRA_API_TOKEN" \
+  "$ATTACHMENT_URL" \
+  -O "$OUTPUT_PATH"
+file "$OUTPUT_PATH"
+```
+
+Validate the type before parsing. If `file` reports HTML instead of the expected JSON, image,
+or document type, the request was probably redirected to the Jira login page. Do not parse or
+trust that response as attachment data.
+
+Do not default to `curl -u user:token` for a Bearer PAT. It uses Basic authentication and may
+produce a login page. If `curl` reports `SSL_ERROR_SYSCALL` while the Jira CLI or `wget` works,
+treat that as a curl/TLS-client compatibility problem and keep using the working client.
+
 ## Troubleshooting
 
 ```bash
@@ -173,6 +203,11 @@ Common failure classes:
 
 | Error | Likely cause | Next step |
 |---|---|---|
+| `lookup <host>: no such host` | DNS or sandbox network access | Retry the same read with approved network access |
+| `SSL_ERROR_SYSCALL` from curl | curl/TLS-client handshake failure | Use the Jira CLI for API reads or `wget` for attachments |
+| Attachment is HTML | Redirect to Jira login | Use `Authorization: Bearer $JIRA_API_TOKEN` |
+| HTTP 401 | Missing, invalid, or expired token | Check `JIRA_API_TOKEN` without printing it |
+| HTTP 403 | Authenticated account lacks permission | Request the required Jira permission |
 | Issue not found | Wrong key or inaccessible project | Verify key and permissions |
 | Transition unavailable | Workflow constraint | Read current state and inspect valid transitions |
 | Permission denied | Missing project permission | Ask a Jira administrator |

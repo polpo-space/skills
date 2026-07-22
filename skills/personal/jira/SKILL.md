@@ -1,6 +1,6 @@
 ---
 name: jira
-description: Use the jira CLI when the user mentions Jira issues such as PROJ-123, asks about tickets, wants to create, view, update, assign, comment on, or transition issues, or asks about sprints, backlogs, and JQL searches.
+description: Use the jira CLI when the user mentions Jira issues such as PROJ-123; asks to create, view, update, assign, comment on, or transition tickets; works with sprints, backlogs, or JQL; downloads Jira attachments; or troubleshoots Jira CLI connectivity, TLS, authentication, and permissions.
 ---
 
 # Jira CLI
@@ -78,6 +78,27 @@ Examples:
 
 Use `references/commands.md` for complex filters, JQL, pagination, and raw output.
 
+Opening an issue in a browser is not part of the default read flow. Run `jira open ISSUE-KEY`
+only when the user explicitly asks to open it.
+
+## Connection and attachment troubleshooting
+
+Classify failures by layer before changing credentials or retrying with another client:
+
+- `lookup <host>: no such host` is a DNS or sandbox network-access failure. Retry the same
+  read-only Jira command with approved network access; do not reconfigure Jira credentials.
+- `SSL_ERROR_SYSCALL` emitted by `curl` is a curl/TLS-client failure, not evidence that the
+  `jira` CLI or Jira server is broken. Prefer the working Jira CLI for API reads.
+- An attachment download that produces HTML was redirected to the login page. Treat it as an
+  authentication-method problem, not malformed attachment data.
+- HTTP `401` means the token is missing, invalid, or expired. HTTP `403` means authentication
+  succeeded but the account lacks permission.
+
+The `jira` CLI does not download attachment bodies. For Jira Data Center instances configured
+with `JIRA_AUTH_TYPE=bearer`, read the attachment URL from `jira issue view ISSUE-KEY --raw`,
+then download it with a Bearer PAT using `wget`. Always validate the downloaded file with `file`
+before parsing it. Load `references/commands.md` for the exact commands.
+
 ## Write operations
 
 Creating, editing, assigning, commenting, linking, moving, or bulk-changing issues modifies shared Jira state.
@@ -121,7 +142,7 @@ For multi-line descriptions, write the body to a temporary Markdown file or use 
 - Creating an issue with multi-line content or custom fields.
 - Building non-trivial JQL.
 - Transitioning, linking, assigning, or working with sprints.
-- Troubleshooting authentication or CLI errors.
+- Troubleshooting connectivity, TLS, authentication, attachment downloads, or CLI errors.
 
 Simple issue views and basic lists can use the quick reference without loading the full file.
 
