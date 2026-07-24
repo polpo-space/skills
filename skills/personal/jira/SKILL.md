@@ -24,8 +24,6 @@ brew install ankitpokhrel/jira-cli/jira-cli
 jira init
 ```
 
-Do not silently substitute another Jira backend.
-
 All Jira CLI commands must load the user's Jira environment file in the same shell:
 
 ```bash
@@ -44,8 +42,6 @@ Run every Jira command like this:
 ```bash
 source ~/.jira-cli.env && jira issue view PROJ-123
 ```
-
-**Hard rule:** Before every Jira CLI invocation, source `~/.jira-cli.env` in the same shell. Never assume the current shell has already loaded these variables.
 
 ## Quick reference
 
@@ -125,6 +121,3 @@ For multi-line descriptions, write the body to a temporary Markdown file or use 
 
 Simple issue views and basic lists can use the quick reference without loading the full file.
 
-## Attribution
-
-Adapted from the Jira skill in `softaworks/agent-toolkit`, retaining only its CLI workflow and adjusting it for this repository.
