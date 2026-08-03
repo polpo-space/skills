@@ -145,6 +145,7 @@ claude plugin install mattpocock-skills@mattpocock
 #### 模型调用
 
 - **[prototype](./skills/engineering/prototype/SKILL.md)**：构建可丢弃原型，用于验证状态、逻辑或界面设计问题。
+- **[pzero-skills](./skills/engineering/pzero-skills/SKILL.md)**：为 pzero 项目提供 REST、RPC、数据库和代码生成约定，帮助产出符合框架规范的服务代码。
 - **[diagnosing-bugs](./skills/engineering/diagnosing-bugs/SKILL.md)**：按照复现、缩小范围、提出假设、增加观测、修复和回归测试的流程诊断问题。
 - **[research](./skills/engineering/research/SKILL.md)**：基于高可信的一手资料进行研究，并把带引用的结论保存为项目文档。
 - **[tdd](./skills/engineering/tdd/SKILL.md)**：按照红灯、绿灯、重构的循环完成测试驱动开发。

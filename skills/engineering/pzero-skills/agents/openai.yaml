@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pzero Skills"
+  short_description: "Build production-ready services with pzero"
+  default_prompt: "Use $pzero-skills to implement this pzero service following the framework conventions."
