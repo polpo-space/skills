@@ -72,6 +72,7 @@ Off the main flow entirely.
 - **`/pzero-skills`** — the framework reference for building and changing pzero services. It keeps REST, RPC, database, migration, and generation work inside pzero's conventions; invoke it directly or let the model reach for it whenever a task uses pzero.
 - **`/research`** — delegate reading legwork to a **background agent**: it investigates a question against **primary sources**, then leaves a cited Markdown file in the repo. Keep working while it reads. The file it produces is something to take *into* the main flow at `/grill-with-docs` — research feeds the thinking, it doesn't replace it.
 - **`/teach`** — learn a concept over multiple sessions, using the current directory as a stateful workspace.
+- **`/i-have-adhd`** — reshape every reply action-first for an ADHD reader (numbered steps, restated state, no preamble/closers). Stays on for the session until you say `stop adhd mode`.
 - **`/writing-great-skills`** — reference for writing and editing skills well.
 
 ## Precondition
