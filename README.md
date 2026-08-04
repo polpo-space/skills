@@ -160,6 +160,7 @@ claude plugin install mattpocock-skills@mattpocock
 
 - **[grill-me](./skills/productivity/grill-me/SKILL.md)**：围绕计划、设计或想法持续提问，直到关键分支和决策得到明确。
 - **[handoff](./skills/productivity/handoff/SKILL.md)**：把当前对话压缩成可供另一个智能体继续工作的交接文档。
+- **[i-have-adhd](./skills/productivity/i-have-adhd/SKILL.md)**：把回复改成 ADHD 友好输出——先给下一步动作、编号步骤、每轮重申状态，去掉开场白和收尾客套。
 - **[teach](./skills/productivity/teach/SKILL.md)**：通过多次会话教授一个新技能或概念，并在当前目录保存学习状态。
 - **[writing-great-skills](./skills/productivity/writing-great-skills/SKILL.md)**：提供编写和维护高质量技能的原则、术语和检查方法。
 
