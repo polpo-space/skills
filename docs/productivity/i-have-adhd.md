@@ -1,15 +1,3 @@
-Quickstart:
-
-```bash
-npx skills add polpo-space/skills --skill=i-have-adhd
-```
-
-```bash
-npx skills update i-have-adhd
-```
-
-[Source](https://github.com/polpo-space/skills/tree/main/skills/productivity/i-have-adhd)
-
 ## What it does
 
 `i-have-adhd` reshapes every reply so an ADHD brain can act on it: the next action comes first, multi-step work is numbered, state is restated each turn, and tangents stay suppressed until the current job is done.
@@ -20,7 +8,7 @@ It is not "be brief." Brevity without a clear next action still loses the thread
 
 You invoke this by typing `/i-have-adhd` — the agent won't reach for it on its own.
 
-Reach for it when you want answers you can execute immediately instead of buried plans, preamble, or "hope this helps" closers. Turn it off when you want the default style back. For writing or editing skills themselves, use [writing-great-skills](https://aihero.dev/skills-writing-great-skills); for compacting a thread so another agent can continue, use [handoff](https://aihero.dev/skills-handoff).
+Reach for it when you want answers you can execute immediately instead of buried plans, preamble, or "hope this helps" closers. Turn it off when you want the default style back. For writing or editing documents that agents consume, use [writing-for-agents](https://aihero.dev/skills-writing-for-agents); for compacting a thread so another agent can continue, use [handoff](https://aihero.dev/skills-handoff).
 
 ## Action first
 
@@ -37,4 +25,4 @@ It also forces a pre-send cut: delete announcing openers, recap closers, and fig
 
 ## Where it fits
 
-`i-have-adhd` is a reach-for-it-anytime standalone — an output-style overlay, not a step in the grill → spec → tickets → implement chain. Its closest neighbours are [handoff](https://aihero.dev/skills-handoff) (cross-session continuity) and [writing-great-skills](https://aihero.dev/skills-writing-great-skills) (how skills themselves should read). For the whole map, see [ask-matt](https://aihero.dev/skills-ask-matt).
+`i-have-adhd` is a reach-for-it-anytime standalone — an output-style overlay, not a step in the grill → spec → tickets → implement chain. Its closest neighbours are [handoff](https://aihero.dev/skills-handoff) (cross-session continuity) and [writing-for-agents](https://aihero.dev/skills-writing-for-agents) (how documents for agents should read). For the whole map, see [ask-matt](https://aihero.dev/skills-ask-matt).

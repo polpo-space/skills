@@ -1,15 +1,3 @@
-Quickstart:
-
-```bash
-npx skills add polpo-space/skills --skill=pzero-skills
-```
-
-```bash
-npx skills update pzero-skills
-```
-
-[Source](https://github.com/polpo-space/skills/tree/main/skills/engineering/pzero-skills)
-
 ## What it does
 
 `pzero-skills` gives the agent the framework-specific rules it needs to build production-ready pzero services: REST API structure, RPC definitions and middleware, database access, migrations, and generated models.
