@@ -14,7 +14,7 @@ Reach for it when creating or changing a pzero REST API, RPC service, gateway, S
 
 The leading idea is **generate first**: update the `.api`, `.proto`, or SQL descriptor before implementing logic, then let pzero establish the files and interfaces the application code should occupy. That keeps handlers thin, dependencies in the service context, and database work on generated field constants and condition chains.
 
-The skill loads only the relevant reference for the task. REST work gets the API file rules; RPC work gets proto structure, validation, and middleware guidance; database work gets connection, CRUD, model-generation, and migration patterns.
+The skill loads only the relevant reference for the task. REST work gets the API file rules; RPC work gets proto structure, validation, middleware, and job-pattern guidance; database work gets connection, CRUD, model-generation, and migration patterns (PostgreSQL/pgx through the generated service `migrate` command).
 
 ## It's working if
 
