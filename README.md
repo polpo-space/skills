@@ -102,6 +102,5 @@ claude plugin install mattpocock-skills@mattpocock
 - **[wait-what](./skills/productivity/wait-what/SKILL.md)**：当一段说明没有讲清楚时，用缺失的上下文和项目词汇重新解释。
 
 #### 模型调用
-
 - **[grilling](./skills/productivity/grilling/SKILL.md)**：围绕计划、决策或想法执行可复用的深度提问流程。
 - **[writing-for-agents](./skills/productivity/writing-for-agents/SKILL.md)**：编写供智能体读取的技能、`AGENTS.md`、`CLAUDE.md` 和被引用文档。
