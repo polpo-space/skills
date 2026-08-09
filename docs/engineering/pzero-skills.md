@@ -1,8 +1,8 @@
 ## What it does
 
-`pzero-skills` gives the agent the framework-specific rules it needs to build production-ready pzero services: REST API structure, RPC definitions and middleware, database access, migrations, and generated models.
+`pzero-skills` gives the agent the framework-specific rules it needs to build production-ready pzero services: REST API structure, RPC definitions and middleware, in-process scheduled jobs, PostgreSQL database access, migrations, and generated models.
 
-It treats generation as the starting point rather than an afterthought. The agent defines the descriptor, runs `pzero gen`, and adds business logic inside the generated Handler → Logic → Model shape instead of inventing a parallel structure.
+It treats generation as the starting point rather than an afterthought. The agent defines the descriptor, runs `pzero gen`, and adds business logic inside the generated Handler → Logic → Model shape instead of inventing a parallel structure. Schema changes run through explicit service migrate commands — never on server startup.
 
 ## When to reach for it
 
@@ -20,8 +20,10 @@ The skill loads only the relevant reference for the task. REST work gets the API
 
 - API descriptors include the pzero-required package, group, and compact-handler settings.
 - Business logic stays out of handlers and uses generated interfaces and field constants.
-- Schema changes include forward and rollback migrations before models are regenerated.
+- Schema changes use `<service> migrate create` / `migrate up` as an explicit release step, not during server startup.
+- Migrations are PostgreSQL (`pgx`) only; `desc/sql` stays a schema snapshot, not a `pzero gen --desc` input.
 - Database filters use `condition.NewChain()` rather than the obsolete constructor.
+- Scheduled jobs use config-driven schedules with `overlap: skip` for singleton tasks, and registry keys match `job.jobs` entries one-to-one.
 
 ## Where it fits
 
